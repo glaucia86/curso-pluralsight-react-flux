@@ -7,10 +7,14 @@ aprendidos no decorrer do curso.
 
 ## Recursos utilizados no desenvolvimento:
 
-- React.Js;
-- Flux;
-- Node.Js
+- React.Js ~ 0.13.3;
+- React-Router ~ 0.13.3
+- JSX;
+- Flux ~ 2.0.3
+- Node.Js;
+- Boostrap Framework;
 - Browserify;
+- ES2015;
 - Gulp;
 - Conceitos sobre React Router;
 - Conceito de SPA (Single Page Application);
