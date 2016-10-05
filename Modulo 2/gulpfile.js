@@ -6,20 +6,20 @@ var open = require('gulp-open'); //Abrir uma URL no browser
 
 var config = {
     port: 8080,
-    devBaseUrl: 'http://localhost',
+    devBaseUrl:'http://localhost',
     paths: {
-        html: './src/*.html',
-        dist: './dist'
+        html:'./src/*.html',
+        dist:'./dist'
     }
 }
 
 //Iniciando um server local de desenvolvimento:
 gulp.task('connect', function() {
 	connect.server({
-		root: ['dist'],
-		port: config.port,
-		base: config.devBaseUrl,
-		livereload: true
+		root:['dist'],
+		port:config.port,
+		base:config.devBaseUrl,
+		livereload:true
 	});
 });
 
