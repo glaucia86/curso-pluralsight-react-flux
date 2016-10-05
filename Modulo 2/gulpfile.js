@@ -13,7 +13,8 @@ var config = {
     paths: {
         html:'./src/*.html',
 		js: './src/**/*.js',
-        dist:'./dist'
+        dist:'./dist',
+		mainJs: './src/main.js'
     }
 }
 
