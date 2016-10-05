@@ -6,6 +6,7 @@ var open = require('gulp-open'); //Abrir uma URL no browser
 var browserify = require('browserify'); //Bundles do js
 var reactify = require('reactify'); //Transforma o React JSX para Js
 var source = require('vinyl-source-stream'); //Usa os textos convencionais com Gulp
+var concat = require('gulp-concat'); //Concatenação de arquivos
 
 var config = {
     port: 8080,
@@ -13,6 +14,10 @@ var config = {
     paths: {
         html:'./src/*.html',
 		js: './src/**/*.js',
+			css: [
+				'node_modules/bootstrap/dist/css/bootstrap.min.css',
+				'node_modules/bootstrap/dist/css/bootstrap-theme.min.css'
+			],
         dist:'./dist',
 		mainJs: './src/main.js'
     }
@@ -53,6 +58,12 @@ gulp.task('js', function() {
 		.pipe(connect.reload());
 });
 
+gulp.task('css', function() {
+	gulp.src(config.paths.css)
+		.pipe(concat('bundle.css'))
+		.pipe(gulp.dest(config.paths.dist + '/css'));
+});
+
 //Essa task será responsável por todas as vezes que formos realizar alguma alteração no projeto,
 //automaticamente ele irá atualizar no browser
 gulp.task('watch', function() {
@@ -63,4 +74,4 @@ gulp.task('watch', function() {
 //E a task abaixo será a responsável por quando quisermos executar a aplicação abaixo 
 //só iremos necessitar digitar no terminal 'gulp' para executar a aplicação.
 //Aqui a task será a default e irá consequentemente executar as demais task inseridas aqui no arquivo 'gulpfile.js'
-gulp.task('default', ['html', 'js', 'open', 'watch']);
+gulp.task('default', ['html', 'js', 'css', 'open', 'watch']);
