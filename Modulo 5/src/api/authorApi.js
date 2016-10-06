@@ -18,7 +18,7 @@ var _generatedId = function(author) {
     return author.firstName.toLowerCase() + '-' + author.lastName.toLowerCase();
 };
 
-//Aqui irá clonar uma cópia do item que será passado por um determinado valor
+//Aqui iremos clonar a cópia dos itens que serão passados por um determinado valor
 var _clone = function(item) {
     return JSON.parse(JSON.stringify(item));
 }
@@ -32,7 +32,7 @@ var AuthorApi = {
     },
 
     //Função responsável por mostrar os autores pelo Id:
-    getAuthorById: function() {
+    getAuthorById: function(id) {
         var author = _.find(authors, {id: id});
         return _clone(authors);
     },
@@ -43,11 +43,23 @@ var AuthorApi = {
 
         if(author.id) {
             var existingAuthorIndex = _.index(authors, _.find(authors, {id: author.id}));
+            authors.splice(existingAuthorIndex, 1, author);
+        } else {
+            author.id = _generatedId(author);
+            authors.push(_clone(author));
         }
+
+        return author;
+    },
+
+    //Função responsável por excluir Autor:
+    deleteAuthor: function(id) {
+        console.log('Exclusão do autor do DB via AJAX');
+        _.remove(authors, {id: id});
     }
+};
 
-
-}
+module.exports = AuthorApi;
 
 
 
