@@ -1,3 +1,12 @@
+/**
+ * Arquivo: header.js
+ * Author: Glaucia Lemos
+ * Data: 06/10/2016
+ * Description: Arquivo responsável por mostrar o conteúdo da nav-bar da aplicão.
+ * Aqui está criado o Componente do 'Header'.
+ * 
+ */
+
 "use strict";
 
 var React = require('react');

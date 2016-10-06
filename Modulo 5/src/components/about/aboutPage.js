@@ -1,3 +1,12 @@
+/**
+ * Arquivo: aboutPage.js
+ * Author: Glaucia Lemos
+ * Data: 06/10/2016
+ * Description: Arquivo responsável por mostrar o conteúdo da página 'About'.
+ * Aqui está o Componente da Página 'About'.
+ * 
+ */
+
 "use strict";
 
 var React = require('react');

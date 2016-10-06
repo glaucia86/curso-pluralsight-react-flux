@@ -29715,6 +29715,15 @@ module.exports = warning;
 module.exports = require('./lib/React');
 
 },{"./lib/React":30}],158:[function(require,module,exports){
+/**
+ * Arquivo: aboutPage.js
+ * Author: Glaucia Lemos
+ * Data: 06/10/2016
+ * Description: Arquivo responsável por mostrar o conteúdo da página 'About'.
+ * Aqui está o Componente da Página 'About'.
+ * 
+ */
+
 "use strict";
 
 var React = require('react');
@@ -29744,6 +29753,15 @@ var About = React.createClass({displayName: "About",
 module.exports = About;
 
 },{"react":157}],159:[function(require,module,exports){
+/**
+ * Arquivo: header.js
+ * Author: Glaucia Lemos
+ * Data: 06/10/2016
+ * Description: Arquivo responsável por mostrar o conteúdo da nav-bar da aplicão.
+ * Aqui está criado o Componente do 'Header'.
+ * 
+ */
+
 "use strict";
 
 var React = require('react');
@@ -29769,6 +29787,15 @@ var Header = React.createClass({displayName: "Header",
 module.exports = Header;
 
 },{"react":157}],160:[function(require,module,exports){
+/**
+ * Arquivo: homePage.js
+ * Author: Glaucia Lemos
+ * Data: 06/10/2016
+ * Description: Arquivo responsável por mostrar a Página Principal da Aplicação.
+ * Aqui está o Componente do 'Home'
+ * 
+ */
+
 "use strict";
 
 var React = require('react');
