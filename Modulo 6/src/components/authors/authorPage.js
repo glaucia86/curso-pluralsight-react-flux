@@ -45,7 +45,7 @@ var Authors = React.createClass({
                 <div className="span10 offset1">
                     <div className="row">
                         <h3 className="well">Autores</h3>
-                    
+
                         <table className="table">
                             <thead>
                                 <th>Id</th>
