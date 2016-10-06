@@ -20,12 +20,15 @@ var Authors = React.createClass({
         };
     },
 
+    //'componentWillMount' é um método que é chamado uma vez só, tanto do lado do client
+    //quando do server antes da renderização acontecer
     componentWillMount: function() {
         this.setState({ authors: AuthorApi.getAllAuthors() });
     },
 
     render: function() {
 
+        //Lógica responsável por trazer os autores já pré-definidos no arquivo: 'authorData.js':
         var createAuthorRow = function(author) {
             return (
                 <tr key={author.id}>
@@ -40,7 +43,9 @@ var Authors = React.createClass({
                 <div className="span10 offset1">
                     <div className="row">
                         <h3 className="well">Autores</h3>
-
+                        
+                        //Parte do código onde receberá os dados dos autores 
+                        //já pré-definidos no arquivo: 'authorData.js'
                         <table className="table">
                             <thead>
                                 <th>Id</th>
