@@ -29719,6 +29719,35 @@ module.exports = require('./lib/React');
 
 var React = require('react');
 
+var About = React.createClass({displayName: "About",
+    render: function() {
+        return (
+            React.createElement("div", null, 
+                React.createElement("h1", null, "Sobre"), 
+                React.createElement("p", null, 
+                    "Esta aplicação utiliza as seguintes tecnologias:", 
+                    React.createElement("ul", null, 
+                        React.createElement("li", null, "React"), 
+                        React.createElement("li", null, "React Router"), 
+                        React.createElement("li", null, "Flux"), 
+                        React.createElement("li", null, "Node"), 
+                        React.createElement("li", null, "Gulp"), 
+                        React.createElement("li", null, "Browserify"), 
+                        React.createElement("li", null, "Bootstrap")
+                    )
+                )
+            )
+        );
+    }
+});
+
+module.exports = About;
+
+},{"react":157}],159:[function(require,module,exports){
+"use strict";
+
+var React = require('react');
+
 var Home = React.createClass({displayName: "Home",
     render: function(){
         return (
@@ -29732,7 +29761,7 @@ var Home = React.createClass({displayName: "Home",
 
 module.exports = Home;
 
-},{"react":157}],159:[function(require,module,exports){
+},{"react":157}],160:[function(require,module,exports){
 /**
  * Arquivo: main.js
  * Author: Glaucia Lemos
@@ -29741,13 +29770,44 @@ module.exports = Home;
  */
 
 $ = jQuery = require('jquery');
+
 var React = require('react');
-var Home = require('./components/homePage.js');
+var Home = require('./components/homePage');
+var About = require('./components/about/aboutPage');
 
 /**
- * Aqui estamos fazendo a chamada do render do Componente 'Home'. A qual ele buscará o elemento
- * 'app' para poder ser renderizado!! :)
+ * Aqui estamos fazendo a roteirização entre as páginas 'Home' com 'About'. 
+ * Por isso que criamos uma routerização entre essas páginas.
  */
-React.render(React.createElement(Home, null), document.getElementById('app'));
 
-},{"./components/homePage.js":158,"jquery":2,"react":157}]},{},[159]);
+(function(win) {
+    "use strict";
+
+    var App = React.createClass({displayName: "App",
+        render: function() {
+            var Child;
+
+            switch(this.props.route) {
+                case 'about': Child = About; break;
+                default: Child = Home;
+            }
+
+            return (
+                React.createElement("div", null, 
+                    React.createElement(Child, null)
+                )
+            );
+        }
+    });
+
+    function render() {
+        var route = win.location.hash.substr(1);
+        React.render(React.createElement(App, {route: route}), document.getElementById('app'));
+    }
+
+    win.addEventListener('hashchange', render);
+    render();
+
+}(window));
+
+},{"./components/about/aboutPage":158,"./components/homePage":159,"jquery":2,"react":157}]},{},[160]);
