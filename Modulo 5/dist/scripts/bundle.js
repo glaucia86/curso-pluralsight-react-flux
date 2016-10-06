@@ -46851,12 +46851,44 @@ var React = require('react');
 var AuthorApi = require('../../api/authorApi');
 
 var Authors = React.createClass({displayName: "Authors",
+
+    //Aqui estamos iniciando o estado dos autores:
+    getInitialState: function() {
+        return {
+            authors: []
+        };
+    },
+
+    componentWillMount: function() {
+        this.setState({ authors: AuthorApi.getAllAuthors() });
+    },
+
     render: function() {
+
+        var createAuthorRow = function(author) {
+            return (
+                React.createElement("tr", {key: author.id}, 
+                    React.createElement("td", null, React.createElement("a", {href: "/#authors/" + author.id}, author.id)), 
+                    React.createElement("td", null, author.firstName, " ", author.lastName)
+                )
+            ); 
+        };
+
         return (
             React.createElement("div", {className: "container"}, 
                 React.createElement("div", {className: "span10 offset1"}, 
                     React.createElement("div", {className: "row"}, 
-                        React.createElement("h3", {className: "well"}, "Autores")
+                        React.createElement("h3", {className: "well"}, "Autores"), 
+
+                        React.createElement("table", {className: "table"}, 
+                            React.createElement("thead", null, 
+                                React.createElement("th", null, "Id"), 
+                                React.createElement("th", null, "Nome")
+                            ), 
+                            React.createElement("tbody", null, 
+                                this.state.authors.map(createAuthorRow, this)
+                            )
+                        )
                     )
                 )
             )
