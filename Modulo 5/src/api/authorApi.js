@@ -42,7 +42,7 @@ var AuthorApi = {
         console.log('Irá só salvar o autor para o DB via AJAX');
 
         if(author.id) {
-            var existingAuthorIndex = _.index(authors, _.find(authors, {id:id}));
+            var existingAuthorIndex = _.index(authors, _.find(authors, {id: author.id}));
         }
     }
 
