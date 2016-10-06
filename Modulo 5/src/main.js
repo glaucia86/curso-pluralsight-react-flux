@@ -10,12 +10,12 @@ $ = jQuery = require('jquery');
 
 var React = require('react');
 var Home = require('./components/homePage');
+var Authors = require('./components/authors/authorPage');
 var About = require('./components/about/aboutPage');
 var Header = require('./components/common/header');
 
 /**
- * Aqui estamos fazendo a roteirização entre as páginas 'Home' com 'About'. 
- * Por isso que criamos uma routerização entre essas páginas.
+ * Aqui estamos fazendo a roteirização entre as páginas.
  */
 
 (function(win) {
@@ -27,6 +27,7 @@ var Header = require('./components/common/header');
 
             switch(this.props.route) {
                 case 'about': Child = About; break;
+                case 'authors': Child = Authors; break;
                 default: Child = Home;
             }
 

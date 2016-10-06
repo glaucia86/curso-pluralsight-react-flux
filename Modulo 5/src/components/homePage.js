@@ -4,7 +4,6 @@
  * Data: 06/10/2016
  * Description: Arquivo responsável por mostrar a Página Principal da Aplicação.
  * Aqui está o Componente do 'Home'
- * 
  */
 
 "use strict";
