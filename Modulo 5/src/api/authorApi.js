@@ -21,7 +21,7 @@ var _generatedId = function(author) {
 //Aqui iremos clonar a cópia dos itens que serão passados por um determinado valor
 var _clone = function(item) {
     return JSON.parse(JSON.stringify(item));
-}
+};
 
 //Desde aqui já iremos simular um CRUD com AJAX:
 var AuthorApi = {
