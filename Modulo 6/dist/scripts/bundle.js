@@ -46848,23 +46848,8 @@ module.exports = About;
 "use strict";
 
 var React = require('react');
-var AuthorApi = require('../../api/authorApi');
 
-var Authors = React.createClass({displayName: "Authors",
-
-    //Aqui estamos iniciando o estado dos autores:
-    getInitialState: function() {
-        return {
-            authors: []
-        };
-    },
-
-    //'componentWillMount' é um método que é chamado uma vez só, tanto do lado do client
-    //quando do server antes da renderização acontecer
-    componentWillMount: function() {
-        this.setState({ authors: AuthorApi.getAllAuthors() });
-    },
-
+var AuthorList = React.createClass({displayName: "AuthorList",
     render: function() {
 
         //Lógica responsável por trazer os autores já pré-definidos no arquivo: 'authorData.js':
@@ -46883,15 +46868,13 @@ var Authors = React.createClass({displayName: "Authors",
             React.createElement("div", {className: "container"}, 
                 React.createElement("div", {className: "span10 offset1"}, 
                     React.createElement("div", {className: "row"}, 
-                        React.createElement("h3", {className: "well"}, "Autores"), 
-
                         React.createElement("table", {className: "table"}, 
                             React.createElement("thead", null, 
                                 React.createElement("th", null, "Id"), 
                                 React.createElement("th", null, "Nome")
                             ), 
                             React.createElement("tbody", null, 
-                                this.state.authors.map(createAuthorRow, this)
+                                this.props.authors.map(createAuthorRow, this)
                             )
                         )
                     )
@@ -46901,9 +46884,59 @@ var Authors = React.createClass({displayName: "Authors",
     }
 });
 
+module.exports = AuthorList;
+
+},{"react":158}],163:[function(require,module,exports){
+/**
+ * Arquivo: homePage.js
+ * Author: Glaucia Lemos
+ * Data: 06/10/2016
+ * Description: Arquivo responsável por mostrar uma página de lista de autores de seus
+ * respectivos cursos. Aqui está o Componente página: 'Autores'
+ */
+
+"use strict";
+
+var React = require('react');
+var AuthorApi = require('../../api/authorApi');
+var AuthorList = require('./authorList');
+
+var Authors = React.createClass({displayName: "Authors",
+
+    //Aqui estamos iniciando o estado dos autores:
+    getInitialState: function() {
+        return {
+            authors: []
+        };
+    },
+
+    //'componentWillMount' é um método que é chamado uma vez só, tanto do lado do client
+    //quando do server antes da renderização acontecer
+    componentDidMount: function() {
+        if(this.isMounted()) {
+            this.setState({ authors: AuthorApi.getAllAuthors() });
+        }     
+    },
+
+    render: function() {
+        //Parte do código onde receberá os dados dos autores 
+        //já pré-definidos no arquivo: 'authorData.js'
+        return (
+            React.createElement("div", {className: "container"}, 
+                React.createElement("div", {className: "span10 offset1"}, 
+                    React.createElement("div", {className: "row"}, 
+                        React.createElement("h3", {className: "well"}, "Autores"), 
+                        React.createElement(AuthorList, {authors: this.state.authors})
+                    )
+                )
+            )
+        );
+    }
+});
+
 module.exports = Authors;
 
-},{"../../api/authorApi":159,"react":158}],163:[function(require,module,exports){
+},{"../../api/authorApi":159,"./authorList":162,"react":158}],164:[function(require,module,exports){
 /**
  * Arquivo: header.js
  * Author: Glaucia Lemos
@@ -46938,7 +46971,7 @@ var Header = React.createClass({displayName: "Header",
 
 module.exports = Header;
 
-},{"react":158}],164:[function(require,module,exports){
+},{"react":158}],165:[function(require,module,exports){
 /**
  * Arquivo: homePage.js
  * Author: Glaucia Lemos
@@ -46964,7 +46997,7 @@ var Home = React.createClass({displayName: "Home",
 
 module.exports = Home;
 
-},{"react":158}],165:[function(require,module,exports){
+},{"react":158}],166:[function(require,module,exports){
 /**
  * Arquivo: main.js
  * Author: Glaucia Lemos
@@ -47017,4 +47050,4 @@ var Header = require('./components/common/header');
 
 }(window));
 
-},{"./components/about/aboutPage":161,"./components/authors/authorPage":162,"./components/common/header":163,"./components/homePage":164,"jquery":2,"react":158}]},{},[165]);
+},{"./components/about/aboutPage":161,"./components/authors/authorPage":163,"./components/common/header":164,"./components/homePage":165,"jquery":2,"react":158}]},{},[166]);
