@@ -1,7 +1,7 @@
 /**
  * Arquivo: routes.js
  * Author: Glaucia Lemos
- * Data: 05/10/2016
+ * Data: 10/10/2016
  * Description: Arquivo responsável por fazer as rotas entre as páginas com o objetivo
  * de deixar a manuntenção mais simplista para futuras inclusões de novas rotas.
  */
@@ -10,14 +10,14 @@
 
 var React = require('react');
 var Router = require('react-router');
-var DefaultRouter = Router.DefaultRouter;
+var DefaultRoute = Router.DefaultRoute;
 var Route = Router.Route;
 
 var routes = (
-    <Route name="app" path="/" handler={require('./components/app')} >
-        <DefaultRouter handler={require('./components/homePage')} />
-        <Route name="authors" handler={require('./components/authors/authorPage')} /> 
-        <Route name="about" handler={require('./components/about/aboutPage')} />  
+    <Route name="app" path="/" handler={require('./components/app')}>
+        <DefaultRoute handler={require('./components/homePage')}/>
+        <Route name="authors" handler={require('./components/authors/authorPage')}/>
+        <Route name="about" handler={require('./components/about/aboutPage')}/>
     </Route>
 );
 
