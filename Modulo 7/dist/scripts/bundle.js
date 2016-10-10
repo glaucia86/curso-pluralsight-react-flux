@@ -50063,19 +50063,21 @@ module.exports = AuthorPage;
 "use strict";
 
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 
 var Header = React.createClass({displayName: "Header",
     render: function() {
         return (
             React.createElement("nav", {className: "navbar navbar-default"}, 
                 React.createElement("div", {className: "container-fluid"}, 
-                    React.createElement("a", {href: "/", className: "navbar-brand"}, 
+                    React.createElement(Link, {to: "app", className: "navbar-brand"}, 
                         React.createElement("img", {src: "images/devcursos.png"})
                     ), 
                     React.createElement("ul", {className: "nav navbar-nav"}, 
-                        React.createElement("li", null, React.createElement("a", {href: "/"}, "Página Principal")), 
-                        React.createElement("li", null, React.createElement("a", {href: "/#authors"}, "Autores")), 
-                        React.createElement("li", null, React.createElement("a", {href: "/#about"}, "Sobre"))
+                        React.createElement("li", null, React.createElement(Link, {to: "app"}, "Página Principal")), 
+                        React.createElement("li", null, React.createElement(Link, {to: "authors"}, "Autores")), 
+                        React.createElement("li", null, React.createElement(Link, {to: "about"}, "Sobre"))
                     )
                 )
             )
@@ -50085,7 +50087,7 @@ var Header = React.createClass({displayName: "Header",
 
 module.exports = Header;
 
-},{"react":200}],208:[function(require,module,exports){
+},{"react":200,"react-router":28}],208:[function(require,module,exports){
 /**
  * Arquivo: homePage.js
  * Author: Glaucia Lemos
@@ -50097,13 +50099,16 @@ module.exports = Header;
 "use strict";
 
 var React = require('react');
+var Router = require('react-router');
+var Link = Router.Link;
 
 var Home = React.createClass({displayName: "Home",
     render: function(){
         return (
             React.createElement("div", {className: "jumbotron"}, 
                 React.createElement("h1", null, "DevCursos - Dashboard"), 
-                React.createElement("p", null, "Aprenda aqui as principais tecnologias do mercado!")
+                React.createElement("p", null, "Aprenda aqui as principais tecnologias do mercado!"), 
+                React.createElement(Link, {to: "about", className: "btn btn-primary btn-lg"}, "Veja Mais!!")
             )
         );
     }
@@ -50111,7 +50116,7 @@ var Home = React.createClass({displayName: "Home",
 
 module.exports = Home;
 
-},{"react":200}],209:[function(require,module,exports){
+},{"react":200,"react-router":28}],209:[function(require,module,exports){
 /**
  * Arquivo: main.js
  * Author: Glaucia Lemos
